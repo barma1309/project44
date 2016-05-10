@@ -1,0 +1,58 @@
+{% extends 'students/static/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+			<!-- Start Main Page Content -->
+			<div class="row" id="content-columns">
+
+				<div class="col-xs-12" id="content-column">
+
+					<!-- Status Message -->
+					<div class="alert alert-warning">Зміни скасовано.</div>
+					<h2> База студентів</h2>
+					<!-- Add Student Button -->
+					<a class="btn btn-primary" href="{% url "students_add" %}">Додати Студента</a>
+					<div><!-- Start Students Listing -->
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th> №</th>
+									<th> Фото</th>
+									<th> Прізвище</th>
+									<th> Ім'я</th>
+									<th> № Білету</th>
+									<th> Дії</th>
+								</tr>
+							</thead>
+
+							<tbody>
+                                {% for student in students %}
+                                   <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td><img class="img-circle" src="{% static student.image %}" height="30"
+                                        width="30" /></td>
+                                    <td><a href="{% url "students_edit" student.id %}">
+                                        {{ student.last_name }}</td>
+                                    <td><a href="{% url "students_edit" student.id %}">
+                                        {{ student.first_name }}</td>
+                                    <td>{{ student.ticket }}</td>
+                                 <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="{% url "students_edit" student.id %}">Редагувати</a></li>
+                                            <li><ahref="/journal/{{ student.id }}">Відвідування</a></li>
+                                            <li><a href="{% url "students_delete" student.id %}">Видалити</a></li>
+                                        </ul>
+                                    </div>
+                                 </td>
+                            </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                            </div>
+
+			<!-- End Main Page Content -->
+{% endblock %}

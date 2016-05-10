@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Сервіс Обліку Студентів</title>
+		<meta name="description"
+		value="Система Обліку Студентів Навчального Закладу" />
+
+		<!-- Include Styles -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
+
+		<style type="text/css">
+			.col-xs-12
+			.col-xs-4
+			.col-xs-8
+		</style>
+
+	</head>
+
+	<body>
+
+		<!-- Start Container -->
+		<div class="container">
+
+			<!-- Start Header -->
+			<div class="row" id="header">
+
+				<!-- Logo -->
+				<div class="col-xs-8">
+					<h1>Сервіс Обліку Студентів</h1>
+				</div>
+
+
+
+
+                <!-- Groups Selector -->
+                <!--
+				<div class="col-xs-4" id="group-selector">
+					<strong>Група:</strong>
+					<select>
+						<option value="">Усі студенти</option>
+						<option value="">Мтм - 21, Подоба Віталій(№254)</option>
+						<option value="">МТМ - 21, Корост Андрій (№2123)</option>
+					</select>
+				</div>
+-->
+			</div>
+			<!-- End Header -->
+
+			<!-- Start SubHeader -->
+			<div class="row" id="sub-header">
+				<div class="col-xs-12">
+					<ul class="nav nav-tabs"><!--class="active" -->
+                        {% url 'home' as home_url %}
+						<li role="presentation" {% if request.get_full_path == home_url %}class="active"{% endif %}><a href="{% url 'home' %}">Студенти</a></li>
+                        {% url 'table' as table_url %}
+     					<li role="presentation" {% if request.get_full_path == table_url %}class="active"{% endif %}><a href="{% url 'table' %}">Відвідування</a></li>
+                        {% url 'group' as group_url %}
+						<li role="presentation" {% if request.get_full_path == group_url %}class="active"{% endif %}><a href="{% url 'group' %}">Групи</a></li>
+                        {% url 'studentstest' as studentstest_url %}
+                        <li role="presentation" {% if request.get_full_path == studentstest_url %}class="active"{% endif %}><a href="{% url 'studentstest' %}">test new list</a></li>
+
+					</ul>
+				</div>
+			</div>
+			<!-- End SubHeader -->
+
+			<!-- Start Main Page Content -->
+			{%  block content %}
+
+            {%  endblock %}
+
+
+			<!-- End Main Page Content -->
+</div>
+		<!-- End Container -->
+			<!-- Start Footer -->
+			<div class="row" id="footer">
+				<div class="col-xs-12">
+					&copy; 2014 Сервіс Обліку Студентів.
+				</div>
+			</div>
+			<!-- End Footer -->
+
+
+
+		<!-- Javascripts Section -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+		<script src="https://cdn.jsdelivr.net/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	</body>
+
+</html>

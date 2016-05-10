@@ -1,0 +1,28 @@
+{% extends 'students/static/base.html' %}
+
+{% block content %}
+ <!-- Start Main Page Content -->
+<div class="row" id="content-columns">
+
+ <div class="col-xs-12" id="content-column">
+
+ <!-- Status Message -->
+ <h2> Групи студентів </h2>
+ <a class="btn btn-primary" href="#">Додати Групи</a>
+
+		<div><!-- Start Group Listing -->
+		<table class="table table-hover table-striped">
+  	<thead>
+		<tr>
+			<th> № </th>
+			<th> Студент </th>
+			<th> СР </th>
+			<th> Дії </th>
+		</tr>
+	</thead>
+	</table>
+	</div>
+
+
+<!-- End Main Page Content -->
+{% endblock %}
